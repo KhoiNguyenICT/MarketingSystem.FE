@@ -113,6 +113,7 @@
         <th>Utm_Source</th>
         <th>Utm_Team</th>
         <th class="text-center">Ads_Link</th>
+        <th class="text-center">Data</th>
         <th class="text-center w-10">Action</th>
       </tr>
     </thead>
@@ -131,6 +132,12 @@
         <td class="text-center">
           <a class="btn btn-link" href="{{item.urlTracking.domain}}/{{item.adsLinkId}}">Visit Site</a>
         </td>
+        <td class="text-center">
+          <button class="btn btn-primary btn-sm" (click)="showContactData(item.data, contactShowData)">
+            <i class="far fa-file-alt"></i>
+            {{item.data | contactData}} fiels
+          </button>
+        </td>
         <td class="text-center w-10">
           <button class="btn btn-sm btn-link">
             <i class="far fa-pencil"></i>
@@ -143,3 +150,5 @@
     </tbody>
   </app-data-table>
 </div>
+
+<app-contact-show-data #contactShowData></app-contact-show-data>

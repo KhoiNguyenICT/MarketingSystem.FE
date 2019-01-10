@@ -1,3 +1,5 @@
+import { ContactData } from 'types'
+import { ContactShowDataComponent } from './../contact-show-data/contact-show-data.component'
 import { ToastrService } from 'ngx-toastr'
 import { DomainService } from 'app/core/services/domain.service'
 import { FormGroup, FormBuilder } from '@angular/forms'
@@ -24,6 +26,7 @@ export class ContactListComponent extends EmbeddedDataTableAccessorService imple
   @ViewChild('dataTable') dataTable: DataTableComponent
   form: FormGroup
   domains = [] as Domain[]
+  contactDatas: ContactData[] = [] as ContactData[]
 
   constructor(
     private contactService: ContactService,
@@ -56,6 +59,20 @@ export class ContactListComponent extends EmbeddedDataTableAccessorService imple
     this.form.patchValue({
       domain: event.address
     })
+  }
+
+  showContactData(data: string, modal: ContactShowDataComponent) {
+    this.contactDatas = [] as ContactData[]
+    const results = JSON.parse(data)
+    const keys = Object.keys(results)
+    for (let i = 0; i < keys.length; i++) {
+      const contactData: ContactData = {
+        key: keys[i],
+        value: results[keys[i]]
+      }
+      this.contactDatas.push(contactData)
+    }
+    modal.show(this.contactDatas)
   }
 
   private buildFormFilter() {

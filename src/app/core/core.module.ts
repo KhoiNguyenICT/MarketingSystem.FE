@@ -23,6 +23,7 @@ import { ToolsService } from './services/tools.service'
 import { ContactService } from './services/contact.service'
 import { TruncatePipe } from './pipes/truncate-string.pipe'
 import { AccountService } from './services/account.service'
+import { ContactDataCountFieldsPipe } from './pipes/contact-data-count-fields.pipe'
 
 @NgModule({
   imports: [
@@ -46,7 +47,8 @@ import { AccountService } from './services/account.service'
     LoadingComponent,
     NoResultsComponent,
     SelectBoxComponent,
-    TruncatePipe
+    TruncatePipe,
+    ContactDataCountFieldsPipe
   ],
   exports: [
     UserNavComponent,
@@ -58,7 +60,8 @@ import { AccountService } from './services/account.service'
     PageTitleComponent,
     DataTableComponent,
     SelectBoxComponent,
-    TruncatePipe
+    TruncatePipe,
+    ContactDataCountFieldsPipe
   ],
   providers: [
     AuthService,

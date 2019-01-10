@@ -1,0 +1,21 @@
+<div bsModal #modal="bs-modal" [config]="{ backdrop: 'static' }" class="modal modal-danger fade modal-slide-from-bottom in">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Contact</h4>
+        <button type="button" (click)="hide()" class="close">
+          <span>&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group" *ngFor="let item of contactDatas">
+          <label class="required">{{item.key}}</label>
+          <input type="text" class="form-control" [value]="item.value" readonly="readonly">
+        </div>
+      </div>
+      <div class="modal-footer text-right">
+        <button class="btn btn-secondary" type="button" (click)="hide()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

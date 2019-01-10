@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  apiRoot: 'http://api.lionsstory.vn',
-  loginRoot: 'http://api.lionsstory.vn/authentication/login',
+  apiRoot: 'http://localhost:5000',
+  loginRoot: 'http://localhost:5000/authentication/login',
 }
 

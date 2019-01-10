@@ -1,3 +1,5 @@
+import { ModalModule } from 'ngx-bootstrap'
+import { ContactShowDataComponent } from './contact-show-data/contact-show-data.component'
 import { ReactiveFormsModule } from '@angular/forms'
 import { CoreModule } from './../../core/core.module'
 import { NgModule } from '@angular/core'
@@ -11,11 +13,13 @@ import { ContactRoutingModule } from './contact-routing.module'
     CommonModule,
     ContactRoutingModule,
     CoreModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ModalModule
   ],
   declarations: [
     ContactComponent,
-    ContactListComponent
+    ContactListComponent,
+    ContactShowDataComponent
   ]
 })
 export class ContactModule { }
