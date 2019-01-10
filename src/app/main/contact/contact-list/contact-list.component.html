@@ -1,0 +1,145 @@
+<app-page-title [PageTitle]="PageTitle"></app-page-title>
+
+<div class="element-box">
+  <h5 class="form-header">Condition</h5>
+  <form *ngIf="form" [formGroup]="form" (ngSubmit)="onFilter()">
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label for="fromTime">From time</label>
+          <input id="fromTime" class="form-control" placeholder="FromTime" type="date" formControlName="fromTime">
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label for="toTime">To time</label>
+          <input id="toTime" class="form-control" placeholder="toTime" type="date" formControlName="toTime">
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label for="domain">Domain</label>
+          <app-select-box [values]="domains" valueField="address" displayField="name" showAllText="Select a domain"
+            (selected)="onSelectDomain($event)"></app-select-box>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label for="campaign">Campaign</label>
+          <input id="campaign" class="form-control" placeholder="Enter campaign name" type="text" formControlName="utmCampaign">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label for="adset">Adset</label>
+          <input id="adset" class="form-control" placeholder="Enter adset name" type="text" formControlName="utmAdset">
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label for="ads">Ads</label>
+          <input id="ads" class="form-control" placeholder="Enter ads name" type="text" formControlName="utmAds">
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label for="agent">Agent</label>
+          <input id="agent" class="form-control" placeholder="Enter agent name" type="text" formControlName="utmAgent">
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label for="medium">Medium</label>
+          <input id="medium" class="form-control" placeholder="Enter medium name" type="text" formControlName="utmMedium">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="source">Source</label>
+          <input id="source" class="form-control" placeholder="Enter source name" type="text" formControlName="utmSource">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="team">Team</label>
+          <input id="team" class="form-control" placeholder="Enter team name" type="text" formControlName="utmTeam">
+        </div>
+      </div>
+    </div>
+    <div class="form-buttons-w d-flex">
+      <div class="ml-auto">
+        <button class="btn btn-primary ml-auto mr-2">
+          <i class="far fa-upload mr-2"></i>
+          Export
+        </button>
+        <button class="btn btn-primary ml-auto mr-2">
+          <i class="far fa-download mr-2"></i>
+          Import
+        </button>
+        <button class="btn btn-primary ml-auto mr-2">
+          <i class="far fa-plus mr-2"></i>
+          Create
+        </button>
+        <button class="btn btn-primary ml-auto mr-2" (click)="onRefresh()">
+          <i class="far fa-sync-alt mr-2"></i>
+          Refresh
+        </button>
+        <button class="btn btn-primary ml-auto" type="submit" (click)="onFilter()">
+          <i class="far fa-filter mr-2"></i>
+          Filter
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="element-box">
+  <app-data-table class="small" #dataTable noResultsIconClass="fal fa-user" noResultsMessage="No contact available"
+    [noTopMenu]="false">
+    <thead>
+      <tr>
+        <th class="w-5 text-center">#</th>
+        <th class="text-center w-15">Created Date</th>
+        <th>Domain</th>
+        <th>Utm_Campaign</th>
+        <th>Utm_Adset</th>
+        <th>Utm_Ads</th>
+        <th>Utm_Agent</th>
+        <th>Utm_Medium</th>
+        <th>Utm_Source</th>
+        <th>Utm_Team</th>
+        <th class="text-center">Ads_Link</th>
+        <th class="text-center w-10">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of dataTable.items; let index = index">
+        <td class="w-5 text-center">{{index+1}}</td>
+        <td class="text-center w-15">{{item.createdDate | date:'medium'}}</td>
+        <td>{{item.urlTracking.domain}}</td>
+        <td>{{item.urlTracking.utmCampaign}}</td>
+        <td>{{item.urlTracking.utmAdset}}</td>
+        <td>{{item.urlTracking.utmAds}}</td>
+        <td>{{item.urlTracking.utmAgent}}</td>
+        <td>{{item.urlTracking.utmMedium}}</td>
+        <td>{{item.urlTracking.utmSource}}</td>
+        <td>{{item.urlTracking.utmTeam}}</td>
+        <td class="text-center">
+          <a class="btn btn-link" href="{{item.urlTracking.domain}}/{{item.adsLinkId}}">Visit Site</a>
+        </td>
+        <td class="text-center w-10">
+          <button class="btn btn-sm btn-link">
+            <i class="far fa-pencil"></i>
+          </button>
+          <button class="btn btn-sm btn-link">
+            <i class="fal fa-trash-alt"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </app-data-table>
+</div>

@@ -1,0 +1,101 @@
+<div class="layout-w">
+  <div class="menu-w selected-menu-color-dark menu-activated-on-hover color-scheme-dark color-style-default sub-menu-color-dark menu-position-side menu-side-left menu-layout-compact sub-menu-style-flyout"
+    style="min-height: 100vh;">
+    <div class="logo-w">
+      <a class="logo" href="index.html">
+        <div class="logo-element"></div>
+        <div class="logo-label ml-2">
+          Marketing System
+        </div>
+      </a>
+    </div>
+    <app-user-nav></app-user-nav>
+    <app-sidebar-search></app-sidebar-search>
+    <ul class="main-menu">
+      <li>
+        <a routerLink="/">
+          <div class="icon-w">
+            <i class="fal fa-tachometer-alt"></i>
+          </div>
+          Dashboard
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/contact/contact-list']">
+          <div class="icon-w">
+            <i class="fal fa-tachometer-alt"></i>
+          </div>
+          Contacts
+        </a>
+      </li>
+      <li class="has-sub-menu">
+        <a class="pointer">
+          <div class="icon-w">
+            <i class="fal fa-book"></i>
+          </div>
+          <span>Tools</span>
+        </a>
+        <div class="sub-menu-w">
+          <div class="sub-menu-header">Tools</div>
+          <div class="sub-menu-i">
+            <ul class="sub-menu">
+              <li>
+                <a [routerLink]="['/tools/generate-tracking']">Generate Tracking</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li class="has-sub-menu">
+        <a class="pointer" disabled>
+          <div class="icon-w">
+            <i class="fal fa-chart-line"></i>
+          </div>
+          <span>Analytics</span>
+        </a>
+        <div class="sub-menu-w">
+          <div class="sub-menu-header">Analytics</div>
+          <div class="sub-menu-i">
+            <ul class="sub-menu">
+              <li>
+                <a>Overview</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li class="has-sub-menu">
+        <a class="pointer">
+          <div class="icon-w">
+            <i class="fal fa-cogs"></i>
+          </div>
+          <span>Settings</span>
+        </a>
+        <div class="sub-menu-w">
+          <div class="sub-menu-header">Settings</div>
+          <div class="sub-menu-i">
+            <ul class="sub-menu">
+              <li>
+                <a [routerLink]="['/settings/domain-list']">Manage domains</a>
+              </li>
+              <li>
+                <a [routerLink]="['/account/account-list']">Manage accounts</a>
+              </li>
+              <li>
+                <a>Manage roles</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="content-w">
+    <app-breadcrumb></app-breadcrumb>
+    <div class="content-i">
+      <div class="content-box">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

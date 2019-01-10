@@ -1,0 +1,9 @@
+<select class="form-control w-100" [class.form-control-sm]="small" [ngModel]="selectedValue" [disabled]="isDisabled"
+  (ngModelChange)="changeValue($event)">
+  <ng-container *ngIf="showAllText?.length">
+    <option *ngIf="selectedValue === undefined || selectedValue" [ngValue]="undefined" [disabled]="showAllTextDisabled">{{
+      showAllText }}</option>
+    <option *ngIf="selectedValue === null" [ngValue]="null" [disabled]="showAllTextDisabled">{{ showAllText }}</option>
+  </ng-container>
+  <option *ngFor="let v of values" [ngValue]="getValue(v)">{{ getDisplayValue(v) }}</option>
+</select>

@@ -1,0 +1,54 @@
+<div class="element-box col-6 offset-sm-3">
+  <h5 class="form-header">Create an account</h5>
+  <form *ngIf="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label for="fullName">Full name</label>
+          <input id="fullName" class="form-control" placeholder="Enter a fullName" type="text" formControlName="fullName">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label for="phoneNumber">Phone number</label>
+          <input id="phoneNumber" class="form-control" placeholder="Enter a phone number" type="text" formControlName="phoneNumber">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input id="email" class="form-control" placeholder="Enter an email" type="text" formControlName="email">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input id="password" class="form-control" placeholder="Enter a password" type="password" formControlName="password">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label for="confirmPassword">Confirm password</label>
+          <input id="confirmPassword" class="form-control" placeholder="Enter a password" type="password"
+            formControlName="confirmPassword">
+        </div>
+      </div>
+    </div>
+    <div class="form-buttons-w d-flex">
+      <div class="ml-auto">
+        <button class="btn btn-primary ml-auto mr-2">
+          <i class="far fa-save mr-2"></i>
+          Submit
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

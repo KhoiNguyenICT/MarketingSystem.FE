@@ -1,0 +1,42 @@
+<app-page-title [PageTitle]="PageTitle">
+  <thead>
+    <a class="btn btn-primary btn-sm" [routerLink]="['/account/account-create']">Create an account</a>
+  </thead>
+</app-page-title>
+
+<div class="element-box">
+  <app-data-table class="small" #dataTable noResultsIconClass="fal fa-user" noResultsMessage="No contact available"
+    [noTopMenu]="false">
+    <thead>
+      <tr>
+        <th class="w-5 text-center">#</th>
+        <th class="text-center w-15">Avatar</th>
+        <th>Full name</th>
+        <th>Email</th>
+        <th class="text-center w-10">Phone number</th>
+        <th class="text-center w-10">Created Date</th>
+        <th class="text-center w-10">Updated Date</th>
+        <th class="text-center w-10">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of dataTable.items; let index = index" class="position-relative">
+        <td class="w-5 text-center">{{index+1}}</td>
+        <td class="text-center avatar">{{item.fullNameAcronym}}</td>
+        <td>{{item.fullName}}</td>
+        <td>{{item.email}}</td>
+        <td class="text-center">{{item.phoneNumber}}</td>
+        <td class="text-center">{{item.createdDate | date:'medium'}}</td>
+        <td class="text-center">{{item.updatedDate | date:'medium'}}</td>
+        <td class="text-center">
+          <button class="btn btn-sm btn-link">
+            <i class="far fa-pencil"></i>
+          </button>
+          <button class="btn btn-sm btn-link">
+            <i class="fal fa-trash-alt"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </app-data-table>
+</div>

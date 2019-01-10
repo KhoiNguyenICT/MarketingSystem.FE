@@ -1,0 +1,108 @@
+<app-page-title [PageTitle]="PageTitle"></app-page-title>
+
+<div class="element-box">
+  <form *ngIf="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <h5 class="form-header">Generate Tracking Form</h5>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label for="trackingName">Tracking Name</label>
+          <input id="trackingName" class="form-control" placeholder="Enter tracking name" type="text" formControlName="name">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label for="domain">Domain</label>
+          <app-select-box [values]="domains" displayField="name" valueField="address" showAllText="Select a domain"
+            (selected)="selectedDomain = $event"></app-select-box>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label for="Utm_Campaign">Utm_Campaign</label>
+          <input id="Utm_Campaign" class="form-control" placeholder="Enter Utm_Campaign" type="text" formControlName="utmCampaign">
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label for="Utm_Adset">Utm_Adset</label>
+          <input id="Utm_Adset" class="form-control" placeholder="Enter Utm_Adset" type="text" formControlName="utmAdset">
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label for="Utm_Ads">Utm_Ads</label>
+          <input id="Utm_Ads" class="form-control" placeholder="Enter Utm_Ads" type="text" formControlName="utmAds">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label for="Utm_Agent">Utm_Agent</label>
+          <input id="Utm_Agent" class="form-control" placeholder="Enter Utm_Agent" type="text" formControlName="utmAgent">
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label for="Utm_Medium">Utm_Medium</label>
+          <input id="Utm_Medium" class="form-control" placeholder="Enter Utm_Medium" type="text" formControlName="utmMedium">
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label for="Utm_Source">Utm_Source</label>
+          <input id="Utm_Source" class="form-control" placeholder="Enter Utm_Source" type="text" formControlName="utmSource">
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label for="Utm_Team">Utm_Team</label>
+          <input id="Utm_Team" class="form-control" placeholder="Enter Utm_Team" type="text" formControlName="utmTeam">
+        </div>
+      </div>
+    </div>
+    <div class="form-buttons-w mt-0 d-flex">
+      <div class="btn-group ml-auto">
+        <button class="btn btn-primary ml-auto" type="submit">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="element-box">
+  <app-data-table class="small" #dataTable noResultsIconClass="fal fa-rocket" noResultsMessage="No sesssions available"
+    [noTopMenu]="false">
+    <thead>
+      <tr>
+        <th class="w-5">#</th>
+        <th class="w-25">Name</th>
+        <th class="w-25 text-center">Address</th>
+        <th class="text-center w-15">Created Date</th>
+        <th class="text-center w-15">Updated Date</th>
+        <th class="text-center w-10">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of dataTable.items; let index = index">
+        <td class="w-5">{{index+1}}</td>
+        <td>{{item.name}}</td>
+        <td class="text-center">
+          <a class="btn btn-link" href='{{item.domain}}/{{item.id}}'>View Site</a>
+        </td>
+        <td class="text-center w-15">{{item.createdDate | date:'medium'}}</td>
+        <td class="text-center w-15">{{item.updatedDate | date:'medium'}}</td>
+        <td class="text-center w-10">
+          <button class="btn btn-sm btn-link">
+            <i class="far fa-pencil"></i>
+          </button>
+          <button class="btn btn-sm btn-link">
+            <i class="fal fa-trash-alt"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </app-data-table>
+</div>
